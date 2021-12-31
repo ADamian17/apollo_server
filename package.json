@@ -4,9 +4,18 @@
   "main": "server.js",
   "author": "adonis martin ",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
   "dependencies": {
+    "@prisma/client": "^3.7.0",
+    "apollo-server": "^2",
     "express": "^4.17.2",
     "express-graphql": "^0.12.0",
-    "graphql": "^16.2.0"
+    "graphql": "^14.6.0",
+    "prisma": "^3.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

@@ -4,6 +4,11 @@ module.exports = {
   Query: {
     info: () => `some this will go here`,
     feed: async (parent, args, context) => context.prisma.link.findMany(),
+    link: async (parent, args, context) => context.prisma.link.findUnique({
+      where: {
+        id: Number(args.id),
+      },
+    }),
   },
   Mutation: {
     post: (parent, args, context, info) => {

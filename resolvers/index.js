@@ -28,16 +28,13 @@ module.exports = {
 
       return updatedLink;
     },
-    deleleLink: (parent, args) => {
-      const prevLinks = {...links}
-      const deletedLink = prevLinks[args.id];
+    deleteLink: async (parent, args, context, info) => {
+      const deletedLink = context.prisma.link.delete({
+        where: { 
+          id: Number(args.id)
+        },
+      });
 
-      delete prevLinks[args.id]
-
-      links = {
-        ...prevLinks
-      }
-      
       return deletedLink;
     }
   },

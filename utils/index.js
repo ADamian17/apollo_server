@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 
 function getTokenPayload(token) {
-  console.log('evn', process.env.APP_SECRET);
   return jwt.verify(token, process.env.APP_SECRET);
 }
 

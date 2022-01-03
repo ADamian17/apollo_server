@@ -3,9 +3,10 @@ require('dotenv').config()
 const fs = require('fs');
 const path = require('path');
 
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer, PubSub } = require('apollo-server');
 const { PrismaClient } = require('@prisma/client');
 
+const pubsub = new PubSub()
 const prisma = new PrismaClient();
 
 const { getUserId } = require('./utils');
@@ -23,10 +24,10 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
-    // console.log('headers', req.headers.authorization);
     return {
       ...req,
       prisma,
+      pubsub,
       userId:
         req && req.headers.authorization
           ? getUserId(req)
